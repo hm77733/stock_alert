@@ -12,17 +12,19 @@ API_Key = "M0B0XK7V9D5OZWZJ"
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
 st_url = 'https://www.alphavantage.co/query'
 parameters = {
-    "function" : "TIME_SERIES_DAILY_ADJUSTED",
-    "symbol" : STOCK,
+    "function": "TIME_SERIES_DAILY_ADJUSTED",
+    "symbol": STOCK,
     "interval": "60min",
     "apikey": API_Key
 
 }
 
-def ab4_yesterday(day:datetime.date):
-    cur_day =day
+
+def ab4_yesterday(day: datetime.date):
+    cur_day = day
     while not cur_day.isoweekday():
-        cur_day = cur_day -datetime.timedelta(days=1)
+        cur_day = cur_day - datetime.timedelta(days=1)
+
 
 r = requests.get(url=st_url, params=parameters)
 print(r.status_code)
@@ -32,7 +34,9 @@ today = datetime.date.today()
 
 yesterday = today - datetime.timedelta(days=1)
 some_day: datetime.date
-x = 1 if (yesterday -datetime.timedelta(days=1)).isoweekday() < 6 else (yesterday -datetime.timedelta(days=1)).isoweekday()-4
+x = 1 if (yesterday - datetime.timedelta(days=1)).isoweekday() < 6 else \
+    (yesterday - datetime.timedelta(days=1)).isoweekday()-4
+
 day_b4_yesterday = yesterday - datetime.timedelta(days=x)
 print(today)
 print(day_b4_yesterday)
@@ -45,12 +49,8 @@ if abs(percent_change) > 5:
     print(f"yes{price_change}, {round(percent_change,3)}")
 
 
-
-
-
-
-## STEP 2: Use https://newsapi.org
-# Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME.
+##  Using https://newsapi.org
+#  get the first 3 news pieces for the COMPANY_NAME.
 api = "1ed2082a86c74f92ac651dae78aff501"
 end_point_url = "https://newsapi.org/v2/everything"
 news_parameters = {
@@ -59,10 +59,10 @@ news_parameters = {
     "sortBy": "publishedAt",
     "apiKey": api
     }
-news_request= requests.get(url=end_point_url, params=news_parameters)
+news_request = requests.get(url=end_point_url, params=news_parameters)
 news_data = news_request.json()
 news_dictionary = {}
-top3news= []
+top3news = []
 
 for i in range(3):
     news_dictionary["title"] = news_data["articles"][i]["title"]
@@ -73,17 +73,4 @@ print(top3news[0]['title'])
 
 
 ## STEP 3: Using https://www.twilio.com to send SMS
-# 
-
-
-#Optional: Format the SMS message like this: 
-"""
-TSLA: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-or
-"TSLA: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-"""
-
+#

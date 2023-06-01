@@ -73,7 +73,7 @@ print(top3news[0]['title'])
 
 
 ## STEP 3: Use https://www.twilio.com
-# Send a seperate message with the percentage change and each article's title and description to your phone number. 
+# 
 
 
 #Optional: Format the SMS message like this: 

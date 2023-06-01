@@ -5,7 +5,7 @@ COMPANY_NAME = "Tesla Inc"
 API_Key = "M0B0XK7V9D5OZWZJ"
 
 
-## STEP 1: Use https://www.alphavantage.co
+##  Using https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 
 
@@ -72,7 +72,7 @@ for i in range(3):
 print(top3news[0]['title'])
 
 
-## STEP 3: Use https://www.twilio.com
+## STEP 3: Using https://www.twilio.com to send SMS
 # 
 
 
